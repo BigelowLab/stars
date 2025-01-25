@@ -673,15 +673,19 @@ print.dimensions = function(x, ...) {
 	invisible(x)
 }
 
-identical_dimensions = function(lst, ignore_resolution = FALSE, tolerance = 0) {
+identical_dimensions = function(lst, ignore_resolution = FALSE, tolerance = 0,
+                                verbose = TRUE) {
 	if (length(lst) > 1) {
 		d1 = attr(lst[[1]], "dimensions")
 		crs1 = st_crs(d1)
+		nms1 = names(d1)
 		st_crs(d1) = NA_crs_
 		for (i in 2:length(lst)) {
 			di = attr(lst[[i]], "dimensions")
-			if (st_crs(di) != crs1) # check semantical equivalence; https://github.com/r-spatial/stars/issues/703
-				return(FALSE)
+			if (st_crs(di) != crs1) {# check semantical equivalence; https://github.com/r-spatial/stars/issues/703
+				if (verbose) message("CRS mismatch between inputs")
+			  return(FALSE)
+			}
 			st_crs(di) = NA_crs_
 			if (ignore_resolution) {
 				for (j in seq_along(d1))
@@ -691,8 +695,21 @@ identical_dimensions = function(lst, ignore_resolution = FALSE, tolerance = 0) {
 				attr(d1, "raster")$blocksizes = NULL
 				attr(di, "raster")$blocksizes = NULL
 			}
-			if (! isTRUE(all.equal(d1, di, tolerance = tolerance, check.attributes = FALSE)))
-				return(FALSE)
+			nmsi = names(di)
+			if (!isTRUE(all.equal(nms1, nmsi))){
+			  if (verbose) message("names and order of dimensions must match")
+			  return(FALSE)
+			}
+	    for (nm in nms1){
+	      is_equal = all.equal(d1[[nm]], di[[nm]], tolerance = tolerance, check.attributes = FALSE)
+	      if (!isTRUE(is_equal)){
+	        if (verbose){
+	          message(sprintf("dimension %s mismatch", nm))
+	          print(is_equal)
+	          return(FALSE)
+	        }
+	      }
+	     }
 		}
 	}
 	TRUE
