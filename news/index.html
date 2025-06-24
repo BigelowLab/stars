@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">stars</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6-8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6-9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,8 +44,20 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6-8" id="version-06-8">version 0.6-8<a class="anchor" aria-label="anchor" href="#version-06-8"></a></h2>
-<ul><li><p><code><a href="../reference/c.stars.html">c.stars()</a></code> is more strict when combining time sequences; <a href="https://github.com/r-spatial/stars/issues/703" class="external-link">#703</a></p></li>
+<h2 class="pkg-version" data-toc-text="0.6-9" id="version-06-9">version 0.6-9<a class="anchor" aria-label="anchor" href="#version-06-9"></a></h2>
+<ul><li><p><code>[.stars()</code> with a <code>character</code> selector selects on names of a dimension if it has names; <a href="https://github.com/r-spatial/stars/issues/747" class="external-link">#747</a></p></li>
+<li><p>handle “intervals” dimension in aggregate.stars() and <code><a href="../reference/st_as_sf.html">st_as_sf.stars()</a></code>; <a href="https://github.com/r-spatial/stars/issues/745" class="external-link">#745</a></p></li>
+<li><p>fix <code><a href="../reference/c.stars.html">c.stars()</a></code> for the case where some of the objects have a single slice on the <code>along=</code> dimension; <a href="https://github.com/r-spatial/stars/issues/743" class="external-link">#743</a></p></li>
+<li><p><code><a href="../reference/redimension.html">st_redimension()</a></code> (and by that, <code><a href="../reference/merge.html">merge.stars()</a></code>) use <code><a href="https://rdrr.io/pkg/abind/man/abind.html" class="external-link">abind()</a></code> for numeric variables rather than <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code>, reducing memory overhead.</p></li>
+<li><p>fix problem with reading HDF4 files; <a href="https://github.com/r-spatial/stars/issues/741" class="external-link">#741</a> by Alexys Rodriguez</p></li>
+<li><p>use, by default, <code><a href="https://rdrr.io/r/base/normalizePath.html" class="external-link">normalizePath()</a></code> on <code>filename</code> in <code><a href="../reference/mdim.html">read_mdim()</a></code>; <a href="https://github.com/r-spatial/stars/issues/735" class="external-link">#735</a></p></li>
+<li><p><code><a href="../reference/st_extract.html">st_extract()</a></code> accepts empty points as target; <a href="https://github.com/r-spatial/stars/issues/734" class="external-link">#734</a></p></li>
+<li><p><code><a href="../reference/st_xy2sfc.html">st_sfc2xy()</a></code> passes <code>...</code> on to <code><a href="../reference/st_as_stars.html">st_as_stars()</a></code>; <a href="https://github.com/r-spatial/stars/issues/733" class="external-link">#733</a></p></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.6-8" id="version-06-8">version 0.6-8<a class="anchor" aria-label="anchor" href="#version-06-8"></a></h2><p class="text-muted">CRAN release: 2025-02-01</p>
+<ul><li><p>address <code>/.difftime</code> issue new in R-devel rev 87670</p></li>
+<li><p><code><a href="../reference/c.stars.html">c.stars()</a></code> is more strict when combining time sequences; <a href="https://github.com/r-spatial/stars/issues/703" class="external-link">#703</a></p></li>
 <li><p>fix plotting when breaks contain duplicates; <a href="https://github.com/r-spatial/stars/issues/728" class="external-link">#728</a></p></li>
 <li><p>fix <code>st_as_stars.im()</code>; <a href="https://github.com/r-spatial/stars/issues/727" class="external-link">#727</a> and <a href="https://github.com/r-spatial/stars/issues/648" class="external-link">#648</a>, thanks to Barry Rowlingson</p></li>
 </ul></div>
@@ -396,7 +408,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
