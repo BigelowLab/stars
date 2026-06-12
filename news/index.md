@@ -1,9 +1,48 @@
 # Changelog
 
+## version 0.7-3
+
+- in [`st_extract()`](../reference/st_extract.md) with matrix `at`, drop
+  units and warn if units are incompatible;
+  [\#770](https://github.com/r-spatial/stars/issues/770)
+
+## version 0.7-2
+
+CRAN release: 2026-04-03
+
+- do not print the `.Environment` attribute of call list elements
+
+- remove usage of `parent.env<-()` in `[<-.stars_proxy()` (considered
+  unsafe)
+
+- replace `%>%` pipe with base pipe `|>`
+
+- add documentation of [`st_normalize()`](../reference/st_normalize.md);
+  [\#766](https://github.com/r-spatial/stars/issues/766)
+
+- [`st_contour()`](../reference/st_contour.md) normalizes grids before
+  export; [\#766](https://github.com/r-spatial/stars/issues/766)
+
+## version 0.7-1
+
+CRAN release: 2026-02-13
+
+- [`write_stars()`](../reference/write_stars.md) supports drivers that
+  only provide CreateCopy(); requires sf \>= 1.0-24;
+  [\#762](https://github.com/r-spatial/stars/issues/762)
+
 ## version 0.7-0
 
+CRAN release: 2025-12-14
+
+- [`read_mdim()`](../reference/mdim.md) passes if `CFtime` is not
+  installed, with a message that times will not be read.
+
+- use `values` column from RAT table, and merge duplicate labels;
+  [\#761](https://github.com/r-spatial/stars/issues/761)
+
 - [`st_extract()`](../reference/st_extract.md) no longer stops when
-  InterpolateAtPoint returns error value(s);
+  GDAL’s `InterpolateAtPoint` returns error value(s);
   [\#760](https://github.com/r-spatial/stars/issues/760)
 
 - add [`st_as_stars()`](../reference/st_as_stars.md) methods for
@@ -116,9 +155,8 @@ CRAN release: 2024-07-16
   them; [\#689](https://github.com/r-spatial/stars/issues/689)
 
 - [`st_crop()`](../reference/st_crop.md) gains an argument `normalize`;
-  when set to `TRUE`
-  [`st_normalize()`](https://r-spatial.github.io/sf/reference/st_normalize.html)
-  is called on the returned value;
+  when set to `TRUE` [`st_normalize()`](../reference/st_normalize.md) is
+  called on the returned value;
   [\#685](https://github.com/r-spatial/stars/issues/685),
   [\#686](https://github.com/r-spatial/stars/issues/686)
 

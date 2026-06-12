@@ -49,8 +49,8 @@ st_apply(
 - PROGRESS:
 
   logical; if `TRUE`, use
-  [`pbapply::pbapply`](https://peter.solymos.org/pbapply/reference/pbapply.html)
-  to show progress bar
+  [`pbapply::pbapply`](https://rdrr.io/pkg/pbapply/man/pbapply.html) to
+  show progress bar
 
 - FUTURE:
 
@@ -149,6 +149,6 @@ if (FALSE) { # \dontrun{
    pboptions(type = "timer")
  }
  st_apply(x, 1:2, range) # dimension "range" is first; rearrange by:
- st_apply(x, 1:2, range) %>% aperm(c(2,3,1))
+ st_apply(x, 1:2, range) |> aperm(c(2,3,1))
 } # }
 ```

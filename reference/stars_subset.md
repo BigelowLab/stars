@@ -6,7 +6,7 @@ subset stars objects
 
 ``` r
 # S3 method for class 'stars_proxy'
-x[i, downsample = 0] <- value
+x[i, ..., downsample = 0] <- value
 
 # S3 method for class 'stars'
 x[i = TRUE, ..., drop = FALSE, crop = !is_curvilinear(x)]
@@ -29,6 +29,11 @@ st_flip(x, which = 1)
   attributes to select, or object of class `sf`, `sfc`, `bbox`, or
   `stars` used as spatial selector; see details
 
+- ...:
+
+  further (logical or integer vector) selectors, matched by order, to
+  select on individual dimensions
+
 - downsample:
 
   downsampling rate used in case `i` is a `stars_proxy` object
@@ -37,11 +42,6 @@ st_flip(x, which = 1)
 
   array of dimensions equal to those in `x`, or a vector or value that
   will be recycled to such an array
-
-- ...:
-
-  further (logical or integer vector) selectors, matched by order, to
-  select on individual dimensions
 
 - drop:
 
@@ -158,7 +158,7 @@ plot(buf, add = TRUE, col = NA)
 x[x > 75] # generates lots of NA's; pattern for each band
 #> stars object with 3 dimensions and 1 attribute
 #> attribute(s):
-#>              Min. 1st Qu. Median     Mean 3rd Qu. Max.   NA's
+#>              Min. 1st Qu. Median     Mean 3rd Qu. Max.    NAs
 #> L7_ETMs.tif    76      82     90 94.40052     101  255 443210
 #> dimension(s):
 #>      from  to  offset delta                     refsys point x/y
@@ -168,7 +168,7 @@ x[x > 75] # generates lots of NA's; pattern for each band
 x[x[,,,1] > 75] # recycles a single band template for all bands
 #> stars object with 3 dimensions and 1 attribute
 #> attribute(s):
-#>              Min. 1st Qu. Median     Mean 3rd Qu. Max.   NA's
+#>              Min. 1st Qu. Median     Mean 3rd Qu. Max.    NAs
 #> L7_ETMs.tif     1      63     79 74.98075      93  255 318960
 #> dimension(s):
 #>      from  to  offset delta                     refsys point x/y
@@ -190,14 +190,14 @@ s["rnorm"] = rnorm(prod(dim(s)))
 s
 #> stars object with 2 dimensions and 7 attributes
 #> attribute(s):
-#>             Min.    1st Qu.       Median         Mean    3rd Qu.      Max.
-#> band1  35.250000 50.2500000 58.500000000 57.878219426 66.7500000 67.500000
-#> band2  27.200000 46.7500000 56.100000000 56.776205555 67.1500000 76.500000
-#> band3  21.000000 49.0000000 63.000000000 62.777008987 77.0000000 90.000000
-#> band4   9.000000 52.0000000 63.000000000 58.940544413 75.0000000 90.000000
-#> band5   1.000000 63.0000000 89.000000000 71.285092146 90.0000000 90.000000
-#> band6   1.000000 32.0000000 60.000000000 56.662127182 88.0000000 90.000000
-#> rnorm  -5.096659 -0.6759559 -0.004030035 -0.003593885  0.6699726  4.216072
+#>             Min.    1st Qu.       Median         Mean   3rd Qu.      Max.
+#> band1  35.250000 50.2500000 58.500000000 57.878219426 66.750000 67.500000
+#> band2  27.200000 46.7500000 56.100000000 56.776205555 67.150000 76.500000
+#> band3  21.000000 49.0000000 63.000000000 62.777008987 77.000000 90.000000
+#> band4   9.000000 52.0000000 63.000000000 58.940544413 75.000000 90.000000
+#> band5   1.000000 63.0000000 89.000000000 71.285092146 90.000000 90.000000
+#> band6   1.000000 32.0000000 60.000000000 56.662127182 88.000000 90.000000
+#> rnorm  -5.096659 -0.6761147 -0.004160574 -0.003658478  0.669945  4.216072
 #> dimension(s):
 #>   from  to  offset delta                     refsys point x/y
 #> x    1 349  288776  28.5 SIRGAS 2000 / UTM zone 25S FALSE [x]

@@ -6,6 +6,7 @@ This vignette shows how some of the tidyverse verbs can be used on
 The `stars` and `tidyverse` packages are loaded by
 
 ``` r
+
 library(stars)
 ## Loading required package: abind
 ## Loading required package: sf
@@ -24,6 +25,7 @@ library(dplyr)
 Methods now available for class `stars` are
 
 ``` r
+
 methods(class = "stars")
 ##  [1] [                 [[<-              [<-               %in%             
 ##  [5] $<-               adrop             aggregate         aperm            
@@ -49,8 +51,9 @@ methods(class = "stars")
 We will work with a three-band section of a landsat image:
 
 ``` r
-system.file("tif/L7_ETMs.tif", package = "stars") %>%
-    read_stars -> x
+
+system.file("tif/L7_ETMs.tif", package = "stars") |>
+    read_stars() -> x
 x
 ## stars object with 3 dimensions and 1 attribute
 ## attribute(s):
@@ -69,7 +72,8 @@ x
 the dimension on which to act, and the slice number.
 
 ``` r
-x %>% slice(band, 6) -> x6
+
+x |> slice(band, 6) -> x6
 x6
 ## stars object with 2 dimensions and 1 attribute
 ## attribute(s):
@@ -90,7 +94,8 @@ Similar to `slice`, `filter` selects on dimensions but evaluates their
 values rather than their index: in
 
 ``` r
-x %>% filter(x > 289000, x < 291000, band > 3) -> x7
+
+x |> filter(x > 289000, x < 291000, band > 3) -> x7
 x7
 ## stars object with 3 dimensions and 1 attribute
 ## attribute(s):
@@ -116,7 +121,8 @@ selection or using `st_crop` may be an alternative.
 `pull` pulls out an array from a stars object:
 
 ``` r
-x %>% pull(1) -> x8
+
+x |> pull(1) -> x8
 class(x8)
 ## [1] "array"
 dim(x8)
@@ -127,7 +133,8 @@ dim(x8)
 ## `mutate`
 
 ``` r
-x %>% mutate(band2 = 2 * L7_ETMs.tif) -> x2 
+
+x |> mutate(band2 = 2 * L7_ETMs.tif) -> x2 
 x2
 ## stars object with 3 dimensions and 2 attributes
 ## attribute(s):
@@ -146,7 +153,8 @@ x2
 `select` selects an attribute, or a set of attributes:
 
 ``` r
-x2 %>% select(band2) -> x9
+
+x2 |> select(band2) -> x9
 x9
 ## stars object with 3 dimensions and 1 attribute
 ## attribute(s):
@@ -175,6 +183,7 @@ as its `data` argument and
 An example use is
 
 ``` r
+
 library(ggplot2)
 library(viridis)
 ## Loading required package: viridisLite

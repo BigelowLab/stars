@@ -53,7 +53,7 @@
   [`plot(`*`<stars_proxy>`*`)`](plot.md) : plot stars object, with
   subplots for each level of first non-spatial dimension
 - [`prcomp(`*`<stars_proxy>`*`)`](prcomp.md)
-  [`prcomp(`*`<stars>`*`)`](prcomp.md) : Principle components of stars
+  [`prcomp(`*`<stars>`*`)`](prcomp.md) : Principal components of stars
   object
 - [`predict(`*`<stars_proxy>`*`)`](predict.stars.md)
   [`predict(`*`<stars>`*`)`](predict.stars.md) : Predict values, given a
@@ -106,6 +106,9 @@
   and an \`sf\` object
 - [`st_mosaic()`](st_mosaic.md) : build mosaic (composite) of several
   spatially disjoint stars objects
+- [`st_normalize(`*`<stars_proxy>`*`)`](st_normalize.md)
+  [`st_normalize(`*`<stars>`*`)`](st_normalize.md) : Move raster offset
+  such that grid start at row/col (1,1)
 - [`st_raster_type()`](st_raster_type.md) : get the raster type (if any)
   of a stars object
 - [`st_rasterize()`](st_rasterize.md) : rasterize simple feature
