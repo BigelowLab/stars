@@ -49,8 +49,8 @@ st_apply(
 - PROGRESS:
 
   logical; if `TRUE`, use
-  [`pbapply::pbapply`](https://rdrr.io/pkg/pbapply/man/pbapply.html) to
-  show progress bar
+  [`pbapply::pbapply`](https://peter.solymos.org/pbapply/reference/pbapply.html)
+  to show progress bar
 
 - FUTURE:
 

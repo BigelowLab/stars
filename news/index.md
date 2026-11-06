@@ -1,9 +1,29 @@
 # Changelog
 
+## version 0.7-4
+
+- move `st_interpolate_aw.stars()` to sf 1.1-3; see
+  <https://github.com/r-spatial/sf/pull/2624>
+
 ## version 0.7-3
 
-- in [`st_extract()`](../reference/st_extract.md) with matrix `at`, drop
-  units and warn if units are incompatible;
+CRAN release: 2026-07-20
+
+- add weights and arbitrary transforms for
+  [`aggregate()`](../reference/aggregate.stars.md) when `exact=TRUE`;
+  [\#773](https://github.com/r-spatial/stars/issues/773),
+  [\#775](https://github.com/r-spatial/stars/issues/775) by
+  [@rariariari](https://github.com/rariariari)
+
+- move dependency `classInt` to Suggests:, deal with simple cases
+  locally
+
+- in [`slice.stars()`](../reference/dplyr.md) and `[.stars()`, `drop`
+  can now also specify names of dimensions to drop;
+  [\#771](https://github.com/r-spatial/stars/issues/771)
+
+- in [`st_extract()`](../reference/st_extract.md) with matrix `at`, if
+  units are incompatible drop them and warn;
   [\#770](https://github.com/r-spatial/stars/issues/770)
 
 ## version 0.7-2
